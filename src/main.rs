@@ -12,7 +12,8 @@ fn main() {
     let sum = 5 + 10;
     println!("{sum} is {}", get_type_of(&sum));
 
-    let diff = 43.2 - 5.2;
+    let diff = 43.3 - 5.2;
+    // let diff: i32 = 43.3 - 5.2; // error
     println!("{diff} is {}", get_type_of(&diff));
 
     // println!("Guess the number!");

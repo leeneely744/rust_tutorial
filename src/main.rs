@@ -1,14 +1,19 @@
 // use std::cmp::Ordering;
 // use std::io;
+use std::any::type_name;
 
 // use rand::Rng;
 
+fn get_type_of<T>(_: &T) -> &'static str {
+    type_name::<T>()
+}
+
 fn main() {
     let sum = 5 + 10;
-    println!("{}", sum);
+    println!("{sum} is {}", get_type_of(&sum));
 
     let diff = 43.2 - 5.2;
-    println!("{}", diff);
+    println!("{diff} is {}", get_type_of(&diff));
 
     // println!("Guess the number!");
 

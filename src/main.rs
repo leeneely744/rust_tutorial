@@ -2,6 +2,7 @@
 // use std::io;
 use std::any::type_name;
 
+use rust_decimal::dec;
 // use rand::Rng;
 
 fn get_type_of<T>(_: &T) -> &'static str {
@@ -12,9 +13,13 @@ fn main() {
     let sum = 5 + 10;
     println!("{sum} is {}", get_type_of(&sum));
 
-    let diff = 43.3 - 5.2;
+    let diff = 43.3 - 5.2;  // 38.099999999999994
     // let diff: i32 = 43.3 - 5.2; // error
     println!("{diff} is {}", get_type_of(&diff));
+
+    // use rust_decimal
+    let diff2 = dec!(43.4) - dec!(2.2);
+    println!("diff2 is {diff2}");
 
     // println!("Guess the number!");
 

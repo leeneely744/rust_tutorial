@@ -21,6 +21,10 @@ fn main() {
     let diff2 = dec!(43.4) - dec!(2.2);
     println!("diff2 is {diff2}");
 
+    let months = ["January", "February", "March", "April", "May", "June", "July",
+              "August", "September", "October", "November", "December"];
+    println!("{}", months[3]);
+
     // println!("Guess the number!");
 
     // let secret_number = rand::thread_rng().gen_range(1..=100);

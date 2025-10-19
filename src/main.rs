@@ -1,84 +1,17 @@
-// use std::cmp::Ordering;
-// use std::io;
+use std::cmp::Ordering;
+use std::io;
 use std::any::type_name;
 
-use rust_decimal::dec;
-// use rand::Rng;
-
-fn get_type_of<T>(_: &T) -> &'static str {
-    // type_name::<T>(); // error
-    type_name::<T>()
-}
+use rand::Rng;
 
 fn main() {
-    let sum = 5 + 10;
-    println!("{sum} is {}", get_type_of(&sum));
+    let mut s = String::from("hello");
+    println!("{s}");
 
-    let diff = 43.3 - 5.2;  // 38.099999999999994
-    // let diff: i32 = 43.3 - 5.2; // error
-    println!("{diff} is {}", get_type_of(&diff));
+    // error
+    // s = "Rust";
+    // println!("{s}");
 
-    // use rust_decimal
-    let diff2 = dec!(43.4) - dec!(2.2);
-    println!("diff2 is {diff2}");
-
-    let months = ["January", "February", "March", "April", "May", "June", "July",
-              "August", "September", "October", "November", "December"];
-    // println!("{}", months[3]);
-    for month in months {
-        println!("{}", month);
-    }
-
-    println!("{}", 3 > 1);
-
-    let mut count = 0;
-    'counting_up: loop {
-        println!("count = {count}");
-        let mut remaining = 10;
-
-        loop {
-            println!("remaining = {remaining}");
-            if remaining == 9 {
-                break;
-            }
-            if count == 2 {
-                break 'counting_up;
-            }
-            remaining -= 1;
-        }
-
-        count += 1;
-    }
-    println!("End count = {count}");
-
-    // println!("Guess the number!");
-
-    // let secret_number = rand::thread_rng().gen_range(1..=100);
-    // // println!("The secret number is: {secret_number}");
-    
-    // loop {
-    //     println!("Please input your guess.");
-
-    //     let mut guess = String::new();
-
-    //     io::stdin()
-    //         .read_line(&mut guess)
-    //         .expect("Failed to read line");
-    
-    //     let guess: u32 = match guess.trim().parse() {
-    //         Ok(num) => num,
-    //         Err(_) => continue,
-    //     };
-    
-    //     println!("You gesses: {guess}");
-
-    //     match guess.cmp(&secret_number) {
-    //         Ordering::Less => println!("Too small!"),
-    //         Ordering::Greater => println!("Too big!"),
-    //         Ordering::Equal => {
-    //             println!("You win");
-    //             break;
-    //         }
-    //     }
-    // }
+    s.push_str(", world");
+    println!("{s}");
 }

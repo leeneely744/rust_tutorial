@@ -24,7 +24,14 @@ fn main() {
     println!("{}", s2);
 
     let ori = String::from("aaa");
-    let col = ori.clone();
-    println!("ori is {}, and col is {}", ori, col);
+    let clo = ori.clone();  // clone is high cost.
+    println!("ori is {}, and clo is {}", ori, clo);
 
+    let cl = String::from("hello");
+    let len = calculate_length(&cl);
+    println!("The length of '{cl} is {len}");
+}
+
+fn calculate_length(s: &String) -> usize {
+    s.len()
 }

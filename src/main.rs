@@ -12,14 +12,20 @@ fn main() {
         email: String::from("test@adf.com"),
         sign_in_count: 1,
     };
+
+    let user2 = User {
+        email: String::from("asdf@sdfi.sdof"),
+        ..user1
+    };
 }
 
 fn build_user(email: String, username: String) -> User {
     // The entire instance must be mutable
+    // Because the email field and the email parameter have the same name, we only need to write email.
     User {
         active: true,
-        username: username,
-        email: email,
+        username,
+        email,
         sign_in_count: 1,
     }
 }

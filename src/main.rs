@@ -13,10 +13,15 @@ fn main() {
         sign_in_count: 1,
     };
 
+    println!("{}", user1.username);
+
     let user2 = User {
         email: String::from("asdf@sdfi.sdof"),
-        ..user1
+        ..user1  // must come last to specify that any remaining fields should get their values from the corresponding fields in user1.
     };
+
+    // error! value borrowed here after move
+    // println!("{}", user1.username);
 }
 
 fn build_user(email: String, username: String) -> User {

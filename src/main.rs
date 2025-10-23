@@ -6,6 +6,15 @@ struct User {
 }
 
 fn main() {
+    let rect1 = (30, 50);
+
+    println!(
+        "The area of the rectangle is {} square pixels.",
+        area(rect1)
+    );
+    
+    println!("------------------");
+
     let user1 = User {
         active: true,
         username: String::from("someone"),
@@ -22,6 +31,10 @@ fn main() {
 
     // error! value borrowed here after move
     // println!("{}", user1.username);
+}
+
+fn area(dimensions: (u32, u32)) -> u32 {
+    dimensions.0 * dimensions.1
 }
 
 fn build_user(email: String, username: String) -> User {

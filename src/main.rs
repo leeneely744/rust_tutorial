@@ -5,6 +5,8 @@ struct User {
     sign_in_count: u64,
 }
 
+// It enable Rectangle to use {rect1:?}
+#[derive(Debug)]
 struct Rectangle {
     width: u32,
     height: u32,
@@ -23,7 +25,8 @@ fn main() {
     );
 
     // 'main' retains its ownership and continue using rect1.
-    println!("width is {}, height is {}", rect1.width, rect1.height);
+    // println!("width is {}, height is {}", rect1.width, rect1.height);
+    println!("rect1 is {rect1:?}");
     
     println!("------------------");
 

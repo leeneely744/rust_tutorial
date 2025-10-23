@@ -5,13 +5,25 @@ struct User {
     sign_in_count: u64,
 }
 
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
 fn main() {
-    let rect1 = (30, 50);
+    // let rect1 = (30, 50);
+    let rect1 = Rectangle {
+        width: 30,
+        height: 50,
+    };
 
     println!(
         "The area of the rectangle is {} square pixels.",
-        area(rect1)
+        area(&rect1)  // borrow the struct
     );
+
+    // 'main' retains its ownership and continue using rect1.
+    println!("width is {}, height is {}", rect1.width, rect1.height);
     
     println!("------------------");
 
@@ -33,8 +45,10 @@ fn main() {
     // println!("{}", user1.username);
 }
 
-fn area(dimensions: (u32, u32)) -> u32 {
-    dimensions.0 * dimensions.1
+fn area(rectangle: &Rectangle) -> u32 {
+// fn area(dimensions: (u32, u32)) -> u32 {
+    // dimensions.0 * dimensions.1
+    rectangle.width * rectangle.height
 }
 
 fn build_user(email: String, username: String) -> User {

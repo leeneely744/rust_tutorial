@@ -20,6 +20,13 @@ impl Rectangle {
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height
     }
+
+    fn square(size: u32) -> Self {
+        Self {
+            width: size,
+            height: size,
+        }
+    }
 }
 
 fn main() {
@@ -52,6 +59,9 @@ fn main() {
     dbg!(&rect1); // dbg! returns ownership of the expression's value
 
     println!("rect2 can hold rect1? -> {}", rect2.can_hold(&rect1));
+
+    let rect3 = Rectangle::square(30);
+    println!("rect3 is {rect3:?}");
     
     println!("------------------");
 

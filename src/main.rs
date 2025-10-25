@@ -16,6 +16,10 @@ impl Rectangle {
     fn area(&self) -> u32 {
         self.width * self.height
     }
+
+    fn can_hold(&self, other: &Rectangle) -> bool {
+        self.width > other.width && self.height > other.height
+    }
 }
 
 fn main() {
@@ -46,6 +50,8 @@ fn main() {
     println!("rect1 is {rect1:?}");
 
     dbg!(&rect1); // dbg! returns ownership of the expression's value
+
+    println!("rect2 can hold rect1? -> {}", rect2.can_hold(&rect1));
     
     println!("------------------");
 

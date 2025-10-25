@@ -12,7 +12,24 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    fn area(&self) -> u32 {
+        self.width * self.height
+    }
+}
+
 fn main() {
+    let rect2 = Rectangle {
+        width: 40,
+        height: 350,
+    };
+    println!(
+        "The area of the rect2 is {}.",
+        rect2.area()
+    );
+
+    println!("------------------");
+
     // let rect1 = (30, 50);
     let rect1 = Rectangle {
         width: 30,
@@ -27,6 +44,8 @@ fn main() {
     // 'main' retains its ownership and continue using rect1.
     // println!("width is {}, height is {}", rect1.width, rect1.height);
     println!("rect1 is {rect1:?}");
+
+    dbg!(&rect1); // dbg! returns ownership of the expression's value
     
     println!("------------------");
 

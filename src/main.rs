@@ -10,7 +10,7 @@ fn main() {
 
     // This is error: mutable borrow occurs here.
     // immutable borrow later used here.
-    println!("test is {test}");
+    // println!("test is {test}");
 
     println!("---------------------------");
 
@@ -32,6 +32,18 @@ fn main() {
     match number {
         Some(number) => println!("number is {number}"),
         None => println!("not number"),
+    }
+
+    println!("---------------------------");
+
+    let v3 = vec![1,2,3];
+    for i in &v3 {
+        println!("{i}");
+    }
+    let mut v4 = vec![4,5,6];
+    for i in &mut v4 {
+        *i += 10;
+        println!("{i}");
     }
 }
 

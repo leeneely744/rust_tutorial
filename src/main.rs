@@ -45,5 +45,21 @@ fn main() {
         *i += 10;
         println!("{i}");
     }
+
+    println!("---------------------------");
+
+    let row = vec![
+        Cell::Int(3),
+        Cell::Text(String::from("hello")),
+        Cell::Float(10.3),
+    ];
+    println!("Cell is {:?}", row);
 }
 
+// We must be explicit about what types are allowed in this vector.
+#[derive(Debug)]
+enum Cell {
+    Int(i32),
+    Float(f64),
+    Text(String),
+}

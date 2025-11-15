@@ -1,34 +1,24 @@
+use std::collections::HashMap;
+
 fn main() {
-    // let mut s = String::new();
-    let data = "initial contents";
-    // `String::from` is same as `to_string`
-    let mut s = data.to_string();
-    let mut s2 = "init".to_string();
-    // `add` converts &String to &str.
-    let s3 = s + &s2;
-    println!("{}", s3);
-    
-    let mut foo = String::from("foo");
-    let bar = "bar";
-    foo.push_str(bar);
-    println!("{} and {}", foo, bar);
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Red"), 20);
+    scores.insert("Red".to_string(), 200);  // update
+    scores.entry("Yellow".to_string()).or_insert(50);  // insert if not exists
+    scores.entry("Blue".to_string()).or_insert(100);
+    println!("{:?}", scores);
+    // let b_score = scores.get("Blue").copied().unwrap_or(0);
+    // println!("score is {}", b_score);
+    // for (key, value) in scores {
+    //     println!("{key}: {value}");
+    // }
 
-    let a = "tic";
-    let b = "toc";
-    let c = "toe";
-    let abc = format!("{a}-{b}-{c}");
-    println!("{abc}");
-
-    // byte index 4 is not a char boundary; it is inside 'ん' (bytes 3..6) of `こんにちは、ぼくドラえもんです。`
-    // note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
-    // error: process didn't exit successfully: `target\debug\hello-rust.exe` (exit code: 101)
-    let hello = "こんにちは、ぼくドラえもんです。";
-    // let h = &hello[0..4];
-    // println!("{h}");
-    for c in hello.chars() {  // explicit characters or bytes
-        println!("{c}");
+    let text = "hello world wonderful world";
+    let mut map = HashMap::new();
+    for word in text.split_whitespace() {
+        let count = map.entry(word).or_insert(0);
+        *count += 1;
     }
-    for b in hello.bytes() {
-        println!("{b}");
-    }
+    println!("{map:?}");
 }

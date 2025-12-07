@@ -1,24 +1,24 @@
-use std::collections::HashMap;
+use std::fs::File;
+use std::io::ErrorKind;
 
 fn main() {
-    let mut scores = HashMap::new();
-    scores.insert(String::from("Blue"), 10);
-    scores.insert(String::from("Red"), 20);
-    scores.insert("Red".to_string(), 200);  // update
-    scores.entry("Yellow".to_string()).or_insert(50);  // insert if not exists
-    scores.entry("Blue".to_string()).or_insert(100);
-    println!("{:?}", scores);
-    // let b_score = scores.get("Blue").copied().unwrap_or(0);
-    // println!("score is {}", b_score);
-    // for (key, value) in scores {
-    //     println!("{key}: {value}");
-    // }
+    let file_open_result = File::open("hello.txt");  // non exist file.
+    // file_open_result is Result<T,E>
+    // If File::open succeeds, file_open_result is an instance of Ok.
+    // If it fails, an instance of Err.
 
-    let text = "hello world wonderful world";
-    let mut map = HashMap::new();
-    for word in text.split_whitespace() {
-        let count = map.entry(word).or_insert(0);
-        *count += 1;
-    }
-    println!("{map:?}");
+    // let _file = match file_open_result {
+    //     Ok(file) => file,
+    //     Err(error) => panic!("Problem opening the file: {error:?}"),
+    // };
+
+    let _file2 = File::open("hello.txt").unwrap_or_else(|error| {
+        if error.kind() == ErrorKind::NotFound {
+            File::create("hello.txt").unwrap_or_else(|error| {
+                panic!("Problem creating the file: {error:?}");
+            })
+        } else {
+            panic!("Problem opening the file: {error:?}");
+        }
+    });
 }

@@ -1,0 +1,16 @@
+
+fn main() {
+    let v = vec![1,2,3];
+
+    // thread 'main' panicked at src\main.rs:4:6:
+    // index out of bounds: the len is 3 but the index is 9
+    // note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+    // error: process didn't exit successfully: `target\debug\hello-rust.exe` (exit code: 101)
+    v[9];
+
+    // Prevent a buffer overread and can lead to security vulnerabilities
+    // if an attacker is able to manipulate the index in such a way as to read data they shouldn't
+    // be allowed to that is stored after the data structure.
+
+    // If we set the RUST_BACKTRACE environment variable to 1, we can get the backtrace.
+}
